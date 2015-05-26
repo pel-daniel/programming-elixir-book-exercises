@@ -12,4 +12,4 @@ IO.inspect f2.(1, 2, 3)
 
 fizzbuzz = fn n -> f2.(rem(n, 3), rem(n, 5), n) end
 
-Enum.each 10..16, fn(x) -> IO.inspect fizzbuzz.(x) end
+Enum.each 10..16, &(IO.inspect fizzbuzz.(&1))
