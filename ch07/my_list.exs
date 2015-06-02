@@ -15,4 +15,12 @@ defmodule MyList do
   defp _max([head | tail], acc) when head <= acc, do: _max(tail, acc)
 
   def caesar(list, n), do: map(list, &(rem(&1 + n - 97, 26) + 97))
+
+  def span(from, from), do: [from]
+  def span(from, to), do: [from | span(from + 1, to)]
+end
+
+defmodule DaveThomasList do
+  def span(from, to) when from > to, do: []
+  def span(from, to), do: [from | span(from + 1, to)]
 end
