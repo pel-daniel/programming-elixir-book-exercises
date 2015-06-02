@@ -6,6 +6,7 @@ defmodule MyList do
   def map([head|tail], func), do: [func.(head) | map(tail, func)]
 
   def mapsum(list, func), do: sum(map(list, func))
+  # list |> map(func) |> sum
 
   def max([head|tail]), do: _max(tail, head)
 
