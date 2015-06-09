@@ -1,7 +1,7 @@
 defmodule MyEnum do
   def all?([], _func), do: true
   def all?([head | tail], func), do: func.(head) and all?(tail, func)
-  
+
   def each([], _func), do: :ok
   def each([head | tail], func) do
     func.(head)
@@ -27,5 +27,17 @@ defmodule MyEnum do
   def take(_, 0),  do: []
   def take([head | tail], n) do
     [head | take(tail, n - 1)]
+  end
+
+  def flatten(xs), do: _flatten(xs, [])
+
+  def _flatten([[x | xs] | ys], acc) do
+    _flatten([x | (xs ++ ys)], acc)
+  end
+  def _flatten([x | xs], acc) do
+    _flatten(xs, [x | acc])
+  end
+  def _flatten([], acc) do
+    Enum.reverse(acc)
   end
 end
