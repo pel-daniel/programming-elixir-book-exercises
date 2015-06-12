@@ -19,4 +19,16 @@ defmodule MyString do
       Enum.map([num1, num2], &String.to_integer/1)
     )
   end
+
+  def center(words) do
+    column_size = Enum.max_by(words, &String.length/1) |> String.length
+
+    Enum.each words, &(print_centered_word &1, column_size)
+  end
+
+  defp print_centered_word(word, column_size) do
+    word
+    |> String.rjust(div(column_size + String.length(word), 2))
+    |> IO.puts
+  end
 end
