@@ -31,4 +31,11 @@ defmodule MyString do
     |> String.rjust(div(column_size + String.length(word), 2))
     |> IO.puts
   end
+
+  def capitalize_sentences(paragraph) do
+    paragraph
+    |> String.split(". ")
+    |> Enum.map(&String.capitalize/1)
+    |> Enum.join(". ")
+  end
 end
